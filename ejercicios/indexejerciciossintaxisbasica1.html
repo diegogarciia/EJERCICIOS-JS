@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicios Sintaxis Básica I</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+    h2 { color: #333; }
+    .ejercicio {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    input, button { padding: 5px; margin: 5px 0; }
+    button { cursor: pointer; }
+    .resultado { margin-top: 10px; font-weight: bold; color: #0066cc; }
+  </style>
+</head>
+<body>
+  <h1>Ejercicios Sintaxis Básica I</h1>
+
+  <div class="ejercicio">
+    <h2>1. Letra de DNI</h2>
+    <input type="number" id="dniInput" placeholder="Introduce número de DNI">
+    <button onclick="mostrarLetraDNI()">Calcular Letra</button>
+    <div class="resultado" id="res1"></div>
+  </div>
+
+  <div class="ejercicio">
+    <h2>2. Invertir Texto</h2>
+    <input type="text" id="textoInput" placeholder="Introduce un texto">
+    <button onclick="mostrarTextoInvertido()">Invertir</button>
+    <div class="resultado" id="res2"></div>
+  </div>
+
+  <div class="ejercicio">
+    <h2>3. Generar 100 números aleatorios únicos</h2>
+    <button onclick="mostrarNumerosAleatorios()">Generar</button>
+    <div class="resultado" id="res3"></div>
+  </div>
+
+  <div class="ejercicio">
+    <h2>4. Contar letra en frase</h2>
+    <input type="text" id="fraseInput" placeholder="Introduce una frase">
+    <input type="text" id="letraInput" maxlength="1" placeholder="Introduce una letra">
+    <button onclick="mostrarConteoLetra()">Contar</button>
+    <div class="resultado" id="res4"></div>
+  </div>
+
+  <div class="ejercicio">
+    <h2>5. Divisores de un número</h2>
+    <input type="number" id="numInput" placeholder="Introduce un número">
+    <button onclick="mostrarDivisores()">Calcular Divisores</button>
+    <div class="resultado" id="res5"></div>
+  </div>
+
+  <script src="ejerciciosintaxisbasica1.js"></script>
+  <script>
+
+    function mostrarLetraDNI() {
+      let dni = parseInt(document.getElementById("dniInput").value);
+      document.getElementById("res1").innerText = "Letra: " + calcularLetraDNI(dni);
+    }
+
+    function mostrarTextoInvertido() {
+      let texto = document.getElementById("textoInput").value;
+      document.getElementById("res2").innerText = "Invertido: " + invertirTexto(texto);
+    }
+
+    function mostrarNumerosAleatorios() {
+      document.getElementById("res3").innerText = generarNumerosAleatorios().join(", ");
+    }
+
+    function mostrarConteoLetra() {
+      let frase = document.getElementById("fraseInput").value;
+      let letra = document.getElementById("letraInput").value;
+      if (letra.length !== 1) {
+        document.getElementById("res4").innerText = "Introduce solo una letra.";
+        return;
+      }
+      document.getElementById("res4").innerText =
+        "La letra '" + letra + "' aparece " + contarLetra(frase, letra) + " veces.";
+    }
+
+    function mostrarDivisores() {
+      let num = parseInt(document.getElementById("numInput").value);
+      if (isNaN(num) || num <= 0) {
+        document.getElementById("res5").innerText = "Introduce un número válido.";
+        return;
+      }
+      document.getElementById("res5").innerText = "Divisores: " + divisores(num).join(", ");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicios Sintaxis Básica II</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+    h2 { color: #333; }
+    .ejercicio {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    input, button { padding: 5px; margin: 5px 0; }
+    button { cursor: pointer; }
+    .resultado { margin-top: 10px; font-weight: bold; color: #0066cc; }
+  </style>
+</head>
+<body>
+  <h1>Ejercicios Sintaxis Básica II</h1>
+
+  <div class="ejercicio">
+    <h2>1. Juego PUM</h2>
+    <button onclick="mostrarJuegoPUM()">Jugar</button>
+    <div class="resultado" id="res1"></div>
+  </div>
+
+  <div class="ejercicio">
+    <h2>2. Calcular Salarios</h2>
+    <input type="text" id="textoInput1" placeholder="Horas trabajadas">
+    <input type="text" id="textoInput2" placeholder="Turno(m,t,n)">
+    <button onclick="mostrarSalarios()">Calcular Salario</button>
+    <div class="resultado" id="res2"></div>
+  </div>
+
+  <script src="ejerciciosintaxisbasica2.js"></script>
+  <script>
+
+    function mostrarJuegoPUM() {
+        document.getElementById("res1").innerText = juegoPUM();
+    }
+
+    function mostrarSalarios() {
+        let horastrabajadas = parseFloat(document.getElementById("textoInput1").value);
+        let turno = document.getElementById("textoInput2").value;
+        document.getElementById("res2").innerText = "Salario: " + salarios(horastrabajadas, turno);
+    }
+
+  </script>
+</body>
+</html>
